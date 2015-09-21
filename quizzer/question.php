@@ -13,7 +13,7 @@
     </header>
     <main>
       <div class="container">
-        <div class="current">Question 1 of 5</div></div>
+        <div class="current">Question 1 of 5</div>
         <p class="question">
           What does PHP stand for?
         </p>
