@@ -5,7 +5,7 @@ Course:   Projects in PHP & MySQL
 Section:  [3] - Quizzing application
 
 -->
-
+<?php include 'database.php'; ?>
 <!DOCTYPE html>
 <html>
   <head>
