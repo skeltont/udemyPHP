@@ -30,7 +30,7 @@ Section:  [2] - Shoutit Shoutbox
         <input type="text" name="user" placeholder="Enter your name ">
         <input type="text" name="message" placeholder="Enter a message">
         <br />
-        <input type="submit" class="shout" name="submit" value="Shout it out" />
+        <input type="submit" class="shout-btn" name="submit" value="Shout it out" />
       </form>
     </div>
   </body>
