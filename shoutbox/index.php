@@ -5,6 +5,13 @@ Course:   Projects in PHP & MySQL
 Section:  [2] - Shoutit Shoutbox
 
 -->
+<?php include 'database.php'; ?>
+
+<?php
+  // Create select query
+  $query = "SELECT * FROM shouts";
+  $shouts = mysqli_query($conn, $query);
+?>
 
 <!DOCTYPE html>
 <html>
@@ -20,9 +27,18 @@ Section:  [2] - Shoutit Shoutbox
       </header>
       <div id="shouts">
         <ul>
-          <li class="shout"><span>10:15pm - </span>Brad: Hey what are you guys up to?</li>
-          <li class="shout"><span>10:15pm - </span>John: I like turtles</li>
-          <li class="shout"><span>10:15pm - </span>Steve: fuck you man.</li>
+          <!-- loop over messages and list them -->
+          <?php while($row = mysqli_fetch_assoc($shouts)) : ?>
+            <li class="shout">
+              <span>
+                <?php echo $row['time']; ?>
+              </span>
+              <strong>
+                <?php echo $row['user']; ?>
+              </strong>
+              <?php echo ': '.$row['message']; ?>
+            </li>
+          <?php endwhile; ?>
         </ul>
       </div>
     <div id="input">
