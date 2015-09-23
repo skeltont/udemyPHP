@@ -1,4 +1,5 @@
 <?php include 'database.php'; ?>
+<?php session_start(); ?>
 <?php
   // Set question number
   $number = (int) $_GET['n'];
@@ -13,6 +14,12 @@
   $query = "SELECT * FROM `choices`
             WHERE question_number = $number";
   $choices = $mysqli->query($query) or die($mysqli->error.__LINE__);
+
+  // get total questions
+  $query = "SELECT * FROM  `questions`";
+  $results = $mysqli->query($query) or die($mysqli->error.__LINE__);
+  $total = $results->num_rows;
+
   // $choices = $result->fetch_assoc();
 ?>
 <!DOCTYPE html>
@@ -30,7 +37,7 @@
     </header>
     <main>
       <div class="container">
-        <div class="current">Question 1 of 5</div>
+        <div class="current">Question <?php echo $question['id']; ?> of <?php echo $total; ?></div>
         <p class="question">
           <?php echo $question['text']; ?>
         </p>
@@ -40,7 +47,8 @@
               <li><input type="radio" name="choice" value="<?php echo $row['id']; ?>" /><?php echo $row['text']; ?></li>
             <?php endwhile; ?>
           </ul>
-          <input type="submit" value="Submit" />
+          <input type="submit" name="submit" value="Submit" />
+          <input type="hidden" name="number" value="<?php echo $number; ?>">
         </form>
       </div>
     </main>
