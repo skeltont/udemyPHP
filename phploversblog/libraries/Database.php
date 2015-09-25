@@ -47,11 +47,11 @@
 
      public function insert($query) {
        $insert_row = $this->link->query($query) or
-        die($this->link->error.__LINE__);
+        die($this->link->error.__LINE__.$this->link->errno);
 
        // validate insert
        if($insert_row) {
-         header('Location: index.php?msg="'.urldecode("Record Added.").'"');
+         header('Location: index.php?msg="'.urlencode("Record Added.").'"');
          exit();
        } else {
          die('Error : ('.$this->link->errno.') '.$this->link->error);
@@ -64,7 +64,7 @@
 
        // validate update
        if($update_row) {
-         header('Location: index.php?msg="'.urldecode("Record Updated.").'"');
+         header('Location: index.php?msg="'.urlencode("Record Updated.").'"');
          exit();
        } else {
          die('Error : ('.$this->link->errno.') '.$this->link->error);
@@ -77,7 +77,7 @@
 
        // validate delete
        if($delete_row) {
-         header('Location: index.php?msg="'.urldecode("Record Deleted.").'"');
+         header('Location: index.php?msg="'.urlencode("Record Deleted.").'"');
          exit();
        } else {
          die('Error : ('.$this->link->errno.') '.$this->link->error);
